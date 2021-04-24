@@ -9,9 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.item_todo.view.*
 
 
-class TodoAdapter (
-    private val todos: MutableList<Todo>
-    ):RecyclerView.Adapter<TodoAdapter.TodoViewHolder>(){
+class TodoAdapter ( private val todos: MutableList<Todo> ):RecyclerView.Adapter<TodoAdapter.TodoViewHolder>(){
 
     class TodoViewHolder (itemView: View): RecyclerView.ViewHolder(itemView)
     
@@ -50,7 +48,9 @@ class TodoAdapter (
         holder.itemView.apply {
             tvTodoTitle.text = curTodo.title
             cbDone.isChecked = curTodo.isChecked
+
             toggleStrikeThrough(tvTodoTitle, curTodo.isChecked)
+
             cbDone.setOnCheckedChangeListener { _, isChecked ->
                 toggleStrikeThrough(tvTodoTitle, isChecked)
                 curTodo.isChecked = !curTodo.isChecked
